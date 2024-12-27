@@ -84,7 +84,7 @@ function App()
         <div id="app">
             <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
             <div>
-                <div>
+                {/* <div>
                     <button className="button" onClick={changeScene}>Change Scene</button>
                 </div>
                 <div>
@@ -95,7 +95,7 @@ function App()
                 </div>
                 <div>
                     <button className="button" onClick={addSprite}>Add New Sprite</button>
-                </div>
+                </div> */}
             </div>
         </div>
     )

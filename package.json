@@ -22,21 +22,27 @@
         "typescript"
     ],
     "scripts": {
-        "dev": "node log.js dev & next dev -p 8080",
+        "dev": "node log.js dev & next dev -p 8080 ",
         "build": "node log.js build & next build",
         "dev-nolog": "next dev -p 8080",
-        "build-nolog": "next build"
+        "build-nolog": "next build",
+        "server" : "nodemon server.js"
     },
     "dependencies": {
         "next": "14.2.3",
+        "nodemon": "^3.1.9",
         "phaser": "^3.87.0",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "simple-peer": "^9.11.1",
+        "socket.io": "^4.8.1",
+        "socket.io-client": "^4.8.1"
     },
     "devDependencies": {
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "@types/simple-peer": "^9.11.8",
         "typescript": "^5"
     }
 }
