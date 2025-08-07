@@ -5,18 +5,11 @@ import { EventBus } from '../EventBus';
 export class MainMenu extends Scene
 {
     background: GameObjects.Image;
-    logo: GameObjects.Image;
     title: GameObjects.Text;
-    logoTween: Phaser.Tweens.Tween | null;
-    loginInput: HTMLInputElement | null;
-    characterButtons: GameObjects.Text[];
 
     constructor ()
     {
         super('MainMenu');
-        this.logoTween = null;
-        this.loginInput = null;
-        this.characterButtons = [];
     }
 
     
@@ -139,12 +132,6 @@ export class MainMenu extends Scene
 
     changeScene ()
     {
-        if (this.logoTween)
-        {
-            this.logoTween.stop();
-            this.logoTween = null;
-        }
-    
         // Ambil karakter yang dipilih dari localStorage
         const selectedCharacter = localStorage.getItem('character') || 'Warrior';
     

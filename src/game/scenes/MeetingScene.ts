@@ -347,17 +347,17 @@ export class MeetingScene extends Scene {
             console.log(`Removed player: ${id}`);
         });
     
-        this.socket.on("updateUsers", (users) => {
+        this.socket.on("updateUsers", (users: { id: string; username: string; position: { x: number, y: number }; character: string }[]) => {
             console.log("Online users received:", users);
         
-            users.forEach((user) => {
+            users.forEach((user: { id: string; username: string; position: { x: number, y: number }; character: string }) => {
                 if (user.id !== this.socket.id) {
                     this.updateOtherPlayer(user);
                 }
             });
         
             // Hapus pemain yang tidak ada di daftar online
-            const userIds = users.map((user) => user.id);
+            const userIds = users.map((user: { id: string }) => user.id);
             this.otherPlayers.forEach((_, id) => {
                 if (!userIds.includes(id)) {
                     const player = this.otherPlayers.get(id);
@@ -474,7 +474,8 @@ export class MeetingScene extends Scene {
     }
 
     setupPlayerMovement() {
-        this.input.keyboard.on("keydown", (event: KeyboardEvent) => {
+        if (this.input.keyboard) {
+            this.input.keyboard.on("keydown", (event: KeyboardEvent) => {
             const speed = 10;
     
             switch (event.key) {
@@ -506,7 +507,7 @@ export class MeetingScene extends Scene {
             // Debugging log for position updates
             console.log("Position emitted:", { id: this.socket.id, x: this.player.x, y: this.player.y });
         });
-
+        }
         
     }
 
